@@ -1,0 +1,96 @@
+/* ============================================================
+   CONTENT.CSS — LinkedIn Job Hunter AI
+   Injected styles for LinkedIn page overlays
+   ============================================================ */
+
+/* --- Match Score Badge on Job Cards --- */
+.jh-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 100;
+  pointer-events: none;
+  animation: jhFadeIn 0.3s ease;
+}
+
+@keyframes jhFadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.jh-score {
+  background: linear-gradient(135deg, #6c63ff, #8b7eff);
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.4);
+  letter-spacing: 0.3px;
+}
+
+.jh-badge[data-score="0"] .jh-score,
+.jh-badge[data-score^="1"] .jh-score,
+.jh-badge[data-score^="2"] .jh-score,
+.jh-badge[data-score^="3"] .jh-score {
+  background: linear-gradient(135deg, #ff6584, #ff8da1);
+  box-shadow: 0 2px 8px rgba(255, 101, 132, 0.4);
+}
+
+.jh-badge[data-score^="4"] .jh-score,
+.jh-badge[data-score^="5"] .jh-score {
+  background: linear-gradient(135deg, #ffc442, #ffd97d);
+  color: #333;
+  box-shadow: 0 2px 8px rgba(255, 196, 66, 0.4);
+}
+
+.jh-badge[data-score^="7"] .jh-score,
+.jh-badge[data-score^="8"] .jh-score,
+.jh-badge[data-score^="9"] .jh-score,
+.jh-badge[data-score="100"] .jh-score {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #1a3a2a;
+  box-shadow: 0 2px 8px rgba(67, 233, 123, 0.4);
+}
+
+.jh-easy {
+  background: rgba(67, 233, 123, 0.15);
+  border: 1px solid rgba(67, 233, 123, 0.4);
+  color: #43e97b;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+/* --- In-page notification toast --- */
+#jh-notice {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  background: #13131a;
+  color: #e8e8f0;
+  border: 1px solid #6c63ff;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transform: translateY(80px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  max-width: 340px;
+  pointer-events: none;
+}
+
+#jh-notice.jh-notice-show {
+  transform: translateY(0);
+  opacity: 1;
+}
